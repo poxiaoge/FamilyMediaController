@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/top02" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:elevation="2dp">
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="TV视频"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+
+            <ImageButton
+                android:id="@+id/btn_tv_video"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="center"
+                android:background="@drawable/spread"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/list_tv_videos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:elevation="2dp">
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="TV音乐"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <ImageButton
+                android:id="@+id/btn_tv_audio"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="center"
+                android:background="@drawable/spread"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/list_tv_audios"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:elevation="2dp">
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="TV图片"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <ImageButton
+                android:id="@+id/btn_tv_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="center"
+                android:background="@drawable/spread"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/list_tv_images"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:elevation="2dp">
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="PC视频"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <ImageButton
+                android:id="@+id/btn_pc_video"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="center"
+                android:background="@drawable/spread"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/list_pc_videos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:elevation="2dp">
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="PC音乐"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <ImageButton
+                android:id="@+id/btn_pc_audio"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="center"
+                android:background="@drawable/spread"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/list_pc_audios"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:elevation="2dp">
+        <LinearLayout
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="PC图片"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:id="@+id/textView" />
+
+            <ImageButton
+                android:id="@+id/btn_pc_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="center"
+                android:background="@drawable/spread"/>
+        </LinearLayout>
+        <ListView
+            android:id="@+id/list_pc_images"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
