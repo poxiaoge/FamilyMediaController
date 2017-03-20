@@ -23,36 +23,38 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Map;
 
-import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_DLNA_LIST_OK;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_APP_FAIL;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_APP_OK;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_DEVICE_FAIL;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_DEVICE_OK;
+import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_FOLDER_FAIL;
+import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_FOLDER_OK;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_MEDIA_FAIL;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_PC_MEDIA_OK;
+import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.GET_TV_FOLDER_OK;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.PC_IP;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.PC_OUT_PORT;
 import static com.androidlearning.boris.familycentralcontroler.Application.BaseApplication.SOCKET_TIMEOUT;
 
-
 /**
- * Created by poxiaoge on 2017/1/3.
+ * Created by poxiaoge on 2017/3/10.
  */
 
-public class GetPcListThread extends Thread {
-    private final String tag = this.getClass().getSimpleName();
-    private String type;
-    private Handler myhandler;
+public class GetPcFolderThread extends Thread {
 
-    public GetPcListThread(String type, Handler myhandler) {
-        this.type = type;
-        this.myhandler = myhandler;
+    private final String tag =this.getClass().getSimpleName();
+
+    private String cmdString;
+    private Handler handler;
+
+    public GetPcFolderThread(String cmdString, Handler handler) {
+        this.cmdString = cmdString;
+        this.handler = handler;
     }
 
     @Override
     public void run() {
-        PCCommandItem cmdItem = CommandUtil.createGetPcListCommand(type);
-        String cmd = JSON.toJSONString(cmdItem);
+        String cmd = cmdString;
         Log.e(tag, "Begin run");
         Socket client = new Socket();
         DataOutputStream out;
@@ -69,6 +71,7 @@ public class GetPcListThread extends Thread {
 //            out = new DataOutputStream(client.getOutputStream());
 //            out.writeUTF(cmd);
 //            out.flush();
+            Log.e(tag, "get pc folder cmd 2 pc is: " + cmd);
             IOUtils.write(cmd, client.getOutputStream(), "UTF-8");
 //            IOUtils.copy(inBytes, client.getOutputStream(), 8192);
             Log.e(tag, "Out success!");
@@ -79,31 +82,30 @@ public class GetPcListThread extends Thread {
 
 
             Log.e(tag, "In success!");
-            Log.e(tag, data);
+            Log.e(tag, "data from pc is: " + data);
 
-            switch (type) {
-                case ("MEDIALIST"):
-                    BaseApplication.setPCMediaMap(JSON.parseObject(data, new TypeReference<Map<String, List<MediaItem>>>() {
-                    }));
-                    myhandler.sendEmptyMessage(GET_PC_MEDIA_OK);
-                    break;
-                case ("APPLIST"):
-                    BaseApplication.setPCAppList(JSON.parseObject(data, new TypeReference<List<AppItem>>() {
-                    }));
-                    myhandler.sendEmptyMessage(GET_PC_APP_OK);
-                    break;
-                case ("DEVICELIST"):
-                    BaseApplication.setDeviceList(JSON.parseObject(data, new TypeReference<List<DeviceItem>>() {
-                    }));
-                    myhandler.sendEmptyMessage(GET_PC_DEVICE_OK);
-                    break;
-                //TODO:3.20上午
-                case ("DLNALIST"):
-                    BaseApplication.setDlnaList(JSON.parseObject(data,new TypeReference<List<String>>() {
-                    }));
-                    OpenMethodUtil.dlnaList = BaseApplication.dlnaList.toArray(new String[BaseApplication.dlnaList.size()]);
-                    myhandler.sendEmptyMessage(GET_DLNA_LIST_OK);
-            }
+//            switch (type) {
+//                case ("MEDIALIST"):
+//                    BaseApplication.setPCMediaMap(JSON.parseObject(data, new TypeReference<Map<String, List<MediaItem>>>() {
+//                    }));
+//                    myhandler.sendEmptyMessage(GET_PC_MEDIA_OK);
+//                    break;
+//                case ("APPLIST"):
+//                    BaseApplication.setPCAppList(JSON.parseObject(data, new TypeReference<List<AppItem>>() {
+//                    }));
+//                    myhandler.sendEmptyMessage(GET_PC_APP_OK);
+//                    break;
+//                case ("DEVICELIST"):
+//                    BaseApplication.setDeviceList(JSON.parseObject(data, new TypeReference<List<DeviceItem>>() {
+//                    }));
+//                    myhandler.sendEmptyMessage(GET_PC_DEVICE_OK);
+//                    break;
+//            }
+            BaseApplication.currentMediaList.clear();
+            BaseApplication.currentMediaList.addAll(JSON.parseObject(data, new TypeReference<List<MediaItem>>() {
+            }));
+            handler.sendEmptyMessage(GET_PC_FOLDER_OK);
+
 
 //            BaseApplication.setTVAppList(JSON.parseObject(data, new TypeReference<List<AppItem>>(){}));
 //            out.close();
@@ -113,17 +115,7 @@ public class GetPcListThread extends Thread {
 
         } catch (IOException e) {
             e.printStackTrace();
-            switch (type) {
-                case ("MEDIALIST"):
-                    myhandler.sendEmptyMessage(GET_PC_MEDIA_FAIL);
-                    break;
-                case ("APPLIST"):
-                    myhandler.sendEmptyMessage(GET_PC_APP_FAIL);
-                    break;
-                case ("DEVICELIST"):
-                    myhandler.sendEmptyMessage(GET_PC_DEVICE_FAIL);
-                    break;
-            }
+            handler.sendEmptyMessage(GET_PC_FOLDER_FAIL);
         } finally {
             if (!client.isClosed()) {
                 IOUtils.closeQuietly(client);
@@ -131,5 +123,9 @@ public class GetPcListThread extends Thread {
         }
 
     }
+
+
+
+
 
 }

@@ -19,12 +19,14 @@ public class OpenMethodUtil {
 
     static String tag = "OpenMethodUtil";
 
-    static String[] appMethodList = {"miracast","rdp"};
-    static String[] mediaMethodList = {"miracast", "rdp", "dlna"};
+
+    public static String[] appList = null;
+    public static String[] mediaList = null;
+    public static String[] dlnaList = null;
 
 
-    public static void showDialog(final String name, final String path, Context mContext) {
-        final String [] methodList = name.equals("media") ? mediaMethodList:appMethodList;
+    public static void showDialog(final String name, final String path, final Context mContext) {
+        final String [] methodList = name.equals("media") ? mediaList : appList;
         AlertDialog alert;
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         alert = builder.setIcon(R.mipmap.ic_launcher)
@@ -35,11 +37,18 @@ public class OpenMethodUtil {
                         PCCommandItem cmdItem;
                         String cmd;
                         switch (methodList[which]) {
+                            //TODO:3.20上午
                             case ("dlna"):
-                                cmdItem = CommandUtil.createOpenPcDlnaMediaCommand(path, BaseApplication.chosenDevice.getDeviceName());
-                                cmd = JSON.toJSONString(cmdItem);
-                                Log.e(tag, "cmd : " + cmd);
-                                new Send2PCThread(cmd,BaseApplication.PC_IP,BaseApplication.PC_OUT_PORT).start();
+                                if (BaseApplication.dlnaOK) {
+                                    cmdItem = CommandUtil.createOpenPcDlnaMediaCommand(path, BaseApplication.chosenDevice.getDeviceName());
+                                    cmd = JSON.toJSONString(cmdItem);
+                                    Log.e(tag, "cmd : " + cmd);
+                                    new Send2PCThread(cmd,BaseApplication.PC_IP,BaseApplication.PC_OUT_PORT).start();
+                                }else{
+                                    if (BaseApplication.dlnaListOK) {
+                                        showDlnaSelectDialog(path,mContext);
+                                    }
+                                }
                                 break;
                             case ("miracast"):
                                 cmdItem = CommandUtil.createOpenPcMiracastCommand(BaseApplication.chosenDevice.getScreen(), name, path);
@@ -68,6 +77,25 @@ public class OpenMethodUtil {
 
     }
 
+    //TODO:3.20上午
+    public static void showDlnaSelectDialog(final String path, Context mContext) {
+        AlertDialog alert;
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        alert = builder.setIcon(R.mipmap.ic_launcher)
+                .setTitle("请选择DLNA设备")
+                .setItems(dlnaList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        PCCommandItem cmdItem;
+                        String cmd;
+                        cmdItem = CommandUtil.createOpenPcDlnaMediaCommand(path, dlnaList[which]);
+                        cmd = JSON.toJSONString(cmdItem);
+                        Log.e(tag, "cmd : " + cmd);
+                        new Send2PCThread(cmd,BaseApplication.PC_IP,BaseApplication.PC_OUT_PORT).start();
+                    }
+                }).create();
+        alert.show();
+    }
 
 
 

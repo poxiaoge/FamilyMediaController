@@ -9,26 +9,12 @@ import android.net.Uri;
 public class MediaItem {
     private String name;
     private String pathName;
-    private Uri uri;
+    private String uri;
     private String location;
-//    private String openMethod;
+    private String thumbnailurl;
+    private String type;
+    private Boolean isFolder;
 
-
-    public void setUri(Uri uri) {
-        this.uri = uri;
-    }
-
-    public Uri getUri() {
-        return uri;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
 
     public void setPathName(String pathName) {
         this.pathName = pathName;
@@ -36,6 +22,16 @@ public class MediaItem {
 
     public String getPathName() {
         return pathName;
+    }
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setLocation(String location) {
@@ -46,11 +42,37 @@ public class MediaItem {
         return location;
     }
 
-//    public void setOpenMethod(String openMethod) {
-//        this.openMethod = openMethod;
-//    }
-//
-//    public String getOpenMethod() {
-//        return openMethod;
-//    }
+    public void setThumbnailurl(String thumbnailurl) {
+        this.thumbnailurl = thumbnailurl;
+    }
+
+    public String getThumbnailurl() {
+        return thumbnailurl;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setIsFolder(Boolean isFolder) {
+        this.isFolder = isFolder;
+    }
+
+    public Boolean getIsFolder() {
+        return this.isFolder;
+    }
+
+
 }

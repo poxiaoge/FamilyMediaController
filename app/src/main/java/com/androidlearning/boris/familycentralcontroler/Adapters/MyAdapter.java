@@ -1,6 +1,7 @@
 package com.androidlearning.boris.familycentralcontroler.Adapters;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.androidlearning.boris.familycentralcontroler.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -171,6 +175,25 @@ public abstract class MyAdapter<T> extends BaseAdapter {
             }
             return this;
         }
+
+        public ViewHolder setImage(int id, String url,Context mContext) {
+            View view = getView(id);
+            Glide
+                    .with(mContext)
+                    .load(url)
+                    .centerCrop()
+                    .placeholder(R.drawable.default_thumbnail)
+                    .crossFade()
+                    .into((ImageView)view);
+            return this;
+        }
+
+        public ViewHolder setImageWithUri(int id, Uri uri) {
+            ImageView view = getView(id);
+            view.setImageURI(uri);
+            return this;
+        }
+
 
 
         /**

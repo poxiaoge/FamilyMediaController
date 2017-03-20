@@ -39,6 +39,6 @@ public class AppItem {
 //    }
 //
 //    public String getOpenMethod() {
-//        return openMethod;
+//        return_pic openMethod;
 //    }
 }

@@ -15,11 +15,11 @@
         android:textColor="#ffffff"
         android:textSize="15sp"/>
 
-    <ImageButton
-        android:id="@+id/btn_update_medias"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginLeft="150dp"
-        android:background="@drawable/equipment" />
+    <!--<ImageButton-->
+        <!--android:id="@+id/btn_update_medias"-->
+        <!--android:layout_width="20dp"-->
+        <!--android:layout_height="20dp"-->
+        <!--android:layout_marginLeft="150dp"-->
+        <!--android:background="@drawable/equipment" />-->
 
 </LinearLayout>

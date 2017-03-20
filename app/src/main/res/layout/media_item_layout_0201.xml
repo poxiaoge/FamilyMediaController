@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:minHeight="40dp">
+
+
+
+
+    <ImageView
+        android:id="@+id/img_thumbnail"
+        android:src="@drawable/default_thumbnail"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"/>
+
+
+    <TextView
+        android:id="@+id/text_media_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="视频"
+        android:textSize="24sp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:minHeight="40dp"/>
+
+    <TextView
+        android:id="@+id/text_media_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_media_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_media_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/text_media_isfolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <CheckBox
+        android:id="@+id/check_media_item"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+
+
+</LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/top02" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:background="@drawable/left118"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btn_show_pc"
+            android:text="PC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+        <Button
+            android:id="@+id/btn_show_tv"
+            android:text="TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btn_add_custom_folder"
+            android:text="添加媒体库"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+
+
+    <ListView
+        android:id="@+id/list_medias"
+        android:divider="#888"
+        android:dividerHeight="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_playlist"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:layout_height="40dp">
+
+        <Button
+            android:id="@+id/btn_addto_playlist"
+            android:text="加入播放列表"
+            android:layout_marginStart="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_create_playlist"
+            android:text="管理播放列表"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_select_all"
+            android:text="全选"
+            android:layout_marginLeft="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

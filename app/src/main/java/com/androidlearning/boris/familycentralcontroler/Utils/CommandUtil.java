@@ -29,19 +29,19 @@ public class CommandUtil {
 //        CommandItem cmd = new CommandItem();
 //        cmd.setFirstcommand("GET_TV_VIDEOS");
 //        cmd.setSecondcommand("");
-//        return cmd;
+//        return_pic cmd;
 //    }
 //    public static CommandItem createGetTvAudioCommand(){
 //        CommandItem cmd = new CommandItem();
 //        cmd.setFirstcommand("GET_TV_AUDIOS");
 //        cmd.setSecondcommand("");
-//        return cmd;
+//        return_pic cmd;
 //    }
 //    public static CommandItem createGetTvImageCommand(){
 //        CommandItem cmd = new CommandItem();
 //        cmd.setFirstcommand("GET_TV_IMAGES");
 //        cmd.setSecondcommand("");
-//        return cmd;
+//        return_pic cmd;
 //    }
     public static CommandItem createGetTvMediaCommand(){
         CommandItem cmd = new CommandItem();
@@ -117,6 +117,31 @@ public class CommandUtil {
         cmd.param = params;
         return cmd;
 
+    }
+
+    //TODO:createOpenPcPathCommand及tv需要更改
+    public static PCCommandItem createOpenPcPathCommand(String path, String mime,Boolean root) {
+        PCCommandItem cmd = new PCCommandItem();
+        cmd.setName("MEDIALIST");
+        cmd.setCommand("GET");
+        Map<String, String> params = new HashMap<>();
+        params.put("type", mime);
+        if (root) {
+            params.put("folder", "root");
+        }else {
+            params.put("folder", path);
+        }
+        cmd.param = params;
+        return cmd;
+    };
+
+
+    public static CommandItem createOpenTvPathCommand(String path,String mime,Boolean root) {
+        CommandItem cmd = new CommandItem();
+        cmd.setFirstcommand(mime);
+        cmd.setSecondcommand(path);
+        cmd.setThirdcommand(root);
+        return cmd;
     }
 
 

@@ -254,7 +254,12 @@ public class page01Fragment extends Fragment {
         }
     };
 
+    //TODO:3.20上午
     public void setDevice(DeviceItem chosenDevice, Boolean dataChanged) {
+        BaseApplication.dlnaOK = chosenDevice.getDlnaOk();
+        BaseApplication.miracastOK = chosenDevice.getMiracastOk();
+        BaseApplication.rdpOK = chosenDevice.getRdpOk();
+        BaseApplication.initMethodList();
         BaseApplication.setChosenDevice(chosenDevice);
         BaseApplication.TV_IP = chosenDevice.getIp();
         if(dataChanged) {

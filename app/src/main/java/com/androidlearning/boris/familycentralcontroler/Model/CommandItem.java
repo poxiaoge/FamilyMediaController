@@ -11,6 +11,8 @@ public class CommandItem {
 //    private Map<String,String> param;
     private String firstcommand;
     private String secondcommand;
+    private Boolean thirdcommand;
+
 
     public void setFirstcommand(String firstcommand) {
         this.firstcommand = firstcommand;
@@ -26,6 +28,14 @@ public class CommandItem {
 
     public String getSecondcommand() {
         return secondcommand;
+    }
+
+    public void setThirdcommand(Boolean thirdcommand) {
+        this.thirdcommand = thirdcommand;
+    }
+
+    public Boolean getThirdcommand() {
+        return thirdcommand;
     }
 
 }

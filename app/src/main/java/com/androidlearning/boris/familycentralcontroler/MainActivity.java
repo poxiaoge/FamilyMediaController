@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.androidlearning.boris.familycentralcontroler.Application.BaseApplication;
 import com.androidlearning.boris.familycentralcontroler.fragment01.page01Fragment;
 import com.androidlearning.boris.familycentralcontroler.fragment02.page02Fragment;
 import com.androidlearning.boris.familycentralcontroler.fragment03.page03Fragment;
@@ -27,6 +28,7 @@ import com.androidlearning.boris.familycentralcontroler.fragment04.page04Fragmen
 import com.androidlearning.boris.familycentralcontroler.fragment05.page05Fragment;
 import com.androidlearning.boris.familycentralcontroler.fragment06.page06Fragment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -156,6 +158,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             public void onPageScrollStateChanged(int state) {}
         });
     }
+
 
     private void initView() {
 
